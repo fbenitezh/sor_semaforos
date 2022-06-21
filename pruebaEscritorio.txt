@@ -1,0 +1,64 @@
+T1 (cortar)
+    sem_wait(sem_cortar);
+    while(1){
+        printf("Cortando");
+    }
+    sem_post(sem_mezclar);
+
+
+T2 (mezclar)
+    sem_wait(sem_mezclar);
+    while(1){
+        printf("Mezclando");
+    }
+    sem_post(sem_salero);
+
+
+T3 (salero)
+    sem_wait(sem_salero);
+    while(1){
+        printf("Salando");
+    }
+    sem_post(sem_sarten);
+
+
+T4 (sarten)
+    sem_wait(sem_sarten);
+    while(1){
+        printf("cocinando en sarten");
+    }
+    sem_post(sem_horno);
+
+
+T5 (horno)
+    sem_wait(sem_horno);
+    while(1){
+        printf("Horneando panes");
+    }
+    sem_post(sem_listo);
+
+
+T6 (terminado)
+    sem_wait(sem_terminado);
+    while(1){
+        printf("Terminado");
+    }
+    sem_post(sem_cortar);
+
+
+sem_init(sem_cortar,1);
+sem_init(sem_mezclar,0);
+sem_init(sem_salero,0);
+sem_init(sem_sarten,0);
+sem_init(sem_horno,0);
+sem_init(sem_terminado,0);
+
+
+Esta prueba de escritorio devuelve lo siguiente:
+
+Cortando
+Mezclando
+Salando
+Cocinando en sarten
+Horneando panes
+Terminado
